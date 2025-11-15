@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Arcade Casino — Upgrade</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="panel left">
+    <div class="brand"><div class="logo"><img src="ывфыв.png" onerror="this.style.display='none'"></div>
+      <div><h1>Arcade Demo</h1><div class="muted">Демо — внутренняя валюта</div></div></div>
+    <div class="profile"><div class="avatar" id="avatar">G</div><div><div id="userName">Гость</div><div class="muted" id="userEmail">Не вошёл</div></div></div>
+    <div class="balance-box"><div class="muted">Баланс</div><div id="balance" class="big">0 R$</div><div class="muted small">Мин. кручение — 1000 R$</div></div>
+    <div class="actions"><button class="btn" id="btn-open-login">Вход / Регистрация</button><button class="btn ghost" id="btn-open-deposit">Пополнить</button></div>
+    <nav class="nav">
+      <button data-tab="casino" class="tab-btn">Игровой зал</button>
+      <button data-tab="shop" class="tab-btn">Магазин</button>
+      <button data-tab="cases" class="tab-btn">Кейсы</button>
+      <button data-tab="inventory" class="tab-btn">Инвентарь</button>
+      <button data-tab="gifts" class="tab-btn">Подарки</button>
+      <button data-tab="admin" class="tab-btn">Админ</button>
+      <button id="btn-support" class="tab-btn">Поддержка (Telegram)</button>
+    </nav>
+    <div style="margin-top:12px"><label class="muted small">Загрузить изображение логотипа:</label><input type="file" id="file-img" accept="image/*"></div>
+    <div style="margin-top:12px"><strong>Экспорт / импорт</strong><br><button class="btn ghost" id="export-json">Экспорт JSON</button><button class="btn ghost" id="export-csv">Экспорт CSV</button><input type="file" id="import-file"></div>
+  </aside>
+  <main class="panel main">
+    <header class="card header"><div><div class="muted">Игровой зал</div><div id="big-balance" class="balance-large">0 R$</div></div><div class="muted">ID: <span id="user-id">—</span></div></header>
+    <section id="casino-panel" class="card panel-section">
+      <div class="casino-top">
+        <div class="machine" id="machine"><div class="reel" id="reel1"></div><div class="reel" id="reel2"></div><div class="reel" id="reel3"></div><div class="light" id="win-light"></div></div>
+        <div class="controls"><div class="muted small">Ставка</div><div class="stake">1000 R$</div><button class="btn big" id="btn-spin">Крутить</button><button class="btn ghost" id="btn-spin10">Крутить ×10</button><div class="small muted">Последний: <span id="last-result">—</span></div><div class="vip-box small muted">VIP: <span id="vip-level">0</span> (XP: <span id="vip-xp">0</span>)</div></div>
+      </div>
+    </section>
+    <section id="shop-panel" class="card panel-section hidden"><h3>Магазин</h3><div id="shop-list" class="shop-list"></div></section>
+    <section id="cases-panel" class="card panel-section hidden"><h3>Кейсы</h3><div id="cases-list" class="cases-list"></div><div id="case-stage" class="case-stage hidden"></div></section>
+    <section id="inventory-panel" class="card panel-section hidden"><h3>Инвентарь</h3><div id="inventory-list" class="inventory-list"></div></section>
+    <section id="gifts-panel" class="card panel-section hidden"><h3>Подарки</h3><div id="gifts-list" class="gifts-list"></div></section>
+    <section id="admin-panel" class="card panel-section hidden"><h3>Админ</h3><div class="muted small">Логин: <strong>prokartowkin</strong> · Пароль: <strong>po19sa0p9</strong></div><label><input type="checkbox" id="admin-unlimited"> Бесконечные кручения</label><div style="margin-top:10px"><button class="btn" id="admin-add-balance">Добавить 10000 R$</button><button class="btn ghost" id="admin-give-case">Добавить кейс</button></div></section>
+  </main>
+</div>
+
+<div id="modal-deposit" class="modal hidden"><div class="modal-inner"><h3>Пополнение (демо)</h3><div class="muted small">Макс: 1 000 000 руб — в демо 1 руб = 10 R$</div><input id="deposit-amount" class="input" type="number" min="1" max="1000000" placeholder="Сумма в руб"><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" id="deposit-do">Пополнить</button><button class="btn ghost" id="deposit-cancel">Отмена</button></div></div></div>
+<div id="modal-login" class="modal hidden"><div class="modal-inner"><h3>Вход / Регистрация (демо)</h3><input class="input" id="inpName" placeholder="Имя/ник"><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" id="saveLogin">Сохранить</button><button class="btn ghost" id="closeLogin">Отмена</button></div></div></div>
+
+<audio id="aud-spin" src="spin.wav"></audio><audio id="aud-win" src="win.wav"></audio>
+<script src="script.js"></script>
+</body>
+</html>
